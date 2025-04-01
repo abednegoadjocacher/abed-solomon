@@ -1,0 +1,4 @@
+I have create a new branch name valor_remedy
+
+This new branch is where we are going to be merging all our work
+Let us do well to keep our commits clean and sample.
