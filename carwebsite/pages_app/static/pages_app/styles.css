@@ -50,6 +50,7 @@ body, button, input{
     padding: 40px 30px 0 30px;
     position: absolute;
     width: 100%;
+    z-index: 2;
 }
 .nav-bar{
     display: flex;
