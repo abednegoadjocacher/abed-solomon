@@ -1,0 +1,22 @@
+led / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Django stuff
+*.log
+db.sqlite3
+*.sqlite3
+
+# Media and static files
+/media
+/staticfiles
+
+# IDE settings
+.vscode/
+.idea/
+

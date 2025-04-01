@@ -1,0 +1,12 @@
+* text=auto
+
+ure all text files use LF
+*.txt text eol=lf
+
+# Ensure Windows batch scripts use CRLF
+*.bat text eol=crlf
+
+# Force specific endings for code files
+*.c text eol=lf
+*.py text eol=lf
+*.html text eol=lf
