@@ -19,7 +19,7 @@ from django.urls import path, include #type: ignore
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('pages_app/', include('pages_app.urls')),
+    path('', include('pages_app.urls')),
     path('shop_app/', include('shop_app.urls')),
     path('carmodel_app/', include('carmodel_app.urls')),
 ]

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="/carwebsite/pages_app/static/pages_app/styles.css">
+    <link rel="stylesheet" href="{% static 'pages_app/styles.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -16,7 +16,7 @@
     <header class="nav-box">
         <nav class="nav-bar">
             <div class="nav-bar-logo">
-                <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/luxe logo.png">
+                <img src="{% static 'pages_app/img/luxe logo.png' %}">
             </div>
             <div class="nav-links-box">
                 <ul class="nav-links">
@@ -129,7 +129,7 @@
         <div class="footer-container">
             <div class="contact-details">
                 <div class="contact-logo">
-                    <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/luxe logo.png" alt="luxe logo">
+                    <img src="{% static 'pages_app/pages_app/img/luxe logo.png' %}" alt="luxe logo">
                 </div>
                 <div class="contact-content">
                     <p> ADDRESS: 123 AUTO LANE, CAR CITY, CA 90210</p>
