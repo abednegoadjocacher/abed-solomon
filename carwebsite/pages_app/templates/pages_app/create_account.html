@@ -16,14 +16,14 @@
         <form action="#" method="post">
             <h2>Create account</h2>
             <label for="fullName">Your name</label>
-                <input type="text" id="fullName" placeholder="First and last name" required>
+                <input type="text" id="fullName" name="full_name" placeholder="First and last name" required>
             <label for="number_email">Mobile number or email</label>
-                <input type="text" id="fullName" required>
+                <input type="text" id="number_email" name="number_email" required>
             <label for="password">Password</label>
-                <input type="password" id="password" placeholder="At least 6 characters" required>
+                <input type="password" id="password" placeholder="At least 6 characters" name="password" required>
             <p class="exclamation"><i class="fa-solid fa-circle-exclamation"></i>Passwords must be at least 6 characters.</p>
             <label for="password">Re-enter password</label>
-                <input type="password" id="password" required>
+                <input type="password" id="password" name="password" required>
             <!-- submit btn -->
             <input type="submit" value="Continue" class="btn">
 
