@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="/carwebsite/pages_app/static/pages_app/styles.css">
+    <!-- <link rel="stylesheet" href="/carwebsite/pages_app/static/pages_app/styles.css"> -->
+    <link rel="stylesheet" href="/carwebsite/pages_app/static/pages_app/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
 </head>
 <body>
     <header class="nav-box">
@@ -19,53 +17,41 @@
                 <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/luxe logo.png">
             </div>
             <div class="nav-links-box">
+                <!-- <button id="menu-close-button" class="fas fa-times"></button> -->
                 <ul class="nav-links">
-                    <button id="menu-close-button" class="fas fa-times"></button>
                     <li><a href="#home">Home</a></li>
                     <li class="dropdown">
-                        <button class="dropbtn">Models</button>
+                        <a href="#">Models</a>
+                        <!-- <button class="dropbtn">Models</button>
                         <div class="dropdown-content">
                             <a href="#">Benz</a>
                             <a href="#">Tesla</a>
                             <a href="#">Audi</a>
                             <a href="#">Bugatti</a>
-                        </div>
+                        </div> -->
                     </li>            
                     <li><a href="#shop">Shop</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-              <button id="menu-open-button" class="fas fa-bars"></button>
-            <div class="empty"></div>
+              <!-- <button id="menu-open-button" class="fas fa-bars"></button> -->
+            <div class="like-cart">
+                <i class="fa-regular fa-heart" ></i>            
+                <i class="fas fa-shopping-cart"></i>           
+                <i class="fa-solid fa-circle-user"></i>           
+            </div>
         </nav>
-        <div class="social-links">
-            <a href="#" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-        </div>
     </header>
     <section id="hero">
-        <div class="hero-detail ">
-            <div class="car-img">
-                <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/audi 11.png" alt="Audi-Model s4">
-            </div>
-            <div class="car-stuffs">
-                <div class="car-logo">
-                    <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/audi logo.png" alt="audi-logo">
-                </div>
-                <div class="car-text">
-                    <h1>AUDI</h1>
-                    <p>Model-X</p>
-                </div>
-            </div>
+        <div class="car-img">
+            <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/audi 11.png" alt="Audi-Model R-8">
         </div>
         <div class="car-buttons">
             <input type="button" value="Order Now">
             <input type="button" value="Contact">
         </div>
     </section>
-    <section id="shop">
+    <!-- <section id="shop">
         <h2>TOP HYPER CARS</h2>
         <div class="shop-container">
             <div class="card">
@@ -163,7 +149,7 @@
                 </form>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <script src="js/script.js"></script>
 </body>

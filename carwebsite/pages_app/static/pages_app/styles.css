@@ -47,8 +47,8 @@ body, button, input{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 40px 30px 0 30px;
-    position: absolute;
+    padding: 10px 30px 0 30px;
+    position: fixed;
     width: 100%;
     z-index: 2;
 }
