@@ -1,9 +1,10 @@
+{%load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/carwebsite/pages_app/static/pages_app/create_account.css">
+    <link rel="stylesheet" href="{% static 'pages_app/create_account.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <title>Luxe Registration</title>
@@ -11,7 +12,7 @@
 <body>
     <div class="form-box">
         <div class="logo">
-            <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/luxe logo.png">
+            <img src="{% static 'pages_app/img/pages_app/luxe logo.png' %}">
         </div>
         <form action="#" method="post">
             <h2>Log In</h2>
@@ -22,7 +23,7 @@
             <!-- submit btn -->
             <input type="submit" value="Sign In" class="btn">
 
-            <p class="sign">Don't have an account? <a href="create_account.html">Create Account</a></p>
+            <p class="sign">Don't have an account? <a href="{% static '/pages_app/create_account.html' %}">Create Account</a></p>
         </form>
     </div>
     <footer>
@@ -37,7 +38,7 @@
                 Help 
             </a>
         </div>
-        <p>© 2025, Luxe.com, Inc. or its affiliates</p>
+        <p>&copy; 2025, Luxe.com, Inc. or its affiliates</p>
     </footer>
 </body>
 </html>

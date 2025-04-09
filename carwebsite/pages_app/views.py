@@ -11,7 +11,8 @@ def create_account(request):
     return render(request, 'pages_app/create_account.html')
 
 def login(request):
-    full_name = request.POST['full_name']
-    password = request.POST['password']
-    email = request.POST['email']
+   # full_name = request.POST['full_name']
+   # password = request.POST['password']
+   # email = request.POST['email']
+    return render(request, 'pages_app/login.html')
     
