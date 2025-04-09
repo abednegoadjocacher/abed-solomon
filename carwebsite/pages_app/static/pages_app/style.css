@@ -1,0 +1,117 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+:root{
+    /* color */
+    --color-pim: #fff;
+    --color-sec: #000;
+    --color-nav: #4D3E3E;
+
+    /* border-radius */
+    --radius-1: 4px;
+    --radius-2: 8px;
+    --radius-3: 12px;
+    --radius-4: 16px;
+    --radius-5: 50%;
+
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+/* Nav-Section */
+.nav-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: static;
+    padding: 10px 0;
+    background-color: #ffffff7e;
+    top: -10px;
+    box-shadow: 1px 4px 2px #00000036;
+}
+.nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.nav-bar-logo,
+.like-cart{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-links-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-3);
+    background-color: var(--color-nav);
+}
+.nav-links-box ul li a{
+    color: var(--color-pim);
+    font-family: "Poppins";
+}
+.nav-bar-logo img{
+    width: 100px;
+}
+.nav-links-box .nav-links{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 40px;
+}
+.like-cart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+i{
+    padding: 8px 8px;
+    border-radius: var(--radius-5);
+    background-color: var(--color-nav);
+    cursor: pointer;
+}
+.fa-shopping-cart,
+.fa-heart,
+.fa-circle-user{
+    font-size: 18px;
+    color: var(--color-pim);
+}
+.fa-shopping-cart,
+.fa-circle-user{
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-pim);
+}
+/* Hero-Section */
+#hero{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: url(/carwebsite/pages_app/static/pages_app/img/pages_app/big-building-terrace.jpg) center/cover no-repeat;
+    padding: 4rem 0;
+    gap: 10px;
+}
+.car-img{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+}
+.car-img img{
+    width: 500px;
+    border: 1px solid red;
+}
