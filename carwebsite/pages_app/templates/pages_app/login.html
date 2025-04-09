@@ -1,10 +1,9 @@
-{%load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'pages_app/create_account.css' %}">
+    <link rel="stylesheet" href="/carwebsite/pages_app/static/pages_app/create_account.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <title>Luxe Registration</title>
@@ -12,27 +11,18 @@
 <body>
     <div class="form-box">
         <div class="logo">
-            <img src="{% static 'pages_app/img/pages_app/luxe logo.png' %}">
+            <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/luxe logo.png">
         </div>
-        <form action="login" method="post">
-            {% csrf_token %}
-            <h2>Create account</h2>
+        <form action="#" method="post">
+            <h2>Log In</h2>
             <label for="fullName">Your name</label>
                 <input type="text" id="fullName" name="full_name" placeholder="First and last name" required>
-            <label for="number_email">Mobile number or email</label>
-                <input type="text" id="number_email" name="number_email" required>
             <label for="password">Password</label>
                 <input type="password" id="password" placeholder="At least 6 characters" name="password" required>
-            <p class="exclamation"><i class="fa-solid fa-circle-exclamation"></i>Passwords must be at least 6 characters.</p>
-            <label for="password">Re-enter password</label>
-                <input type="password" id="password" name="password" required>
             <!-- submit btn -->
-            <input type="submit" value="Continue" class="btn">
+            <input type="submit" value="Sign In" class="btn">
 
-            <p class="terms">By creating an account, you agree to Luxe's 
-            <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.</p>
-
-            <p class="sign">Already have an account? <a href="login.html">Sign in</a></p>
+            <p class="sign">Don't have an account? <a href="create_account.html">Create Account</a></p>
         </form>
     </div>
     <footer>
@@ -47,7 +37,7 @@
                 Help 
             </a>
         </div>
-        <p>&copy; 2025, Luxe.com, Inc. or its affiliates</p>
+        <p>© 2025, Luxe.com, Inc. or its affiliates</p>
     </footer>
 </body>
 </html>
