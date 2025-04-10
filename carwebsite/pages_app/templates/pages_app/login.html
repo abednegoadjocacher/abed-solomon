@@ -14,7 +14,8 @@
         <div class="logo">
             <img src="{% static 'pages_app/img/pages_app/luxe logo.png' %}">
         </div>
-        <form action="#" method="post">
+        <form action="/" method="post">
+            {% csrf_token %}
             <h2>Log In</h2>
             <label for="fullName">Your name</label>
                 <input type="text" id="fullName" name="full_name" placeholder="First and last name" required>
@@ -23,7 +24,7 @@
             <!-- submit btn -->
             <input type="submit" value="Sign In" class="btn">
 
-            <p class="sign">Don't have an account? <a href="{% static '/pages_app/create_account.html' %}">Create Account</a></p>
+            <p class="sign">Don't have an account? <a href="/account">Create Account</a></p>
         </form>
     </div>
     <footer>

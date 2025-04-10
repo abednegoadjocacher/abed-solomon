@@ -66,6 +66,9 @@ form{
     border-radius: var(--radius-2);
     box-shadow: 2px 2px 4px #0000004d;
 }
+h3{
+    color: red;
+}
 form h2{
     width: 100%;
     font-size: 1.8rem;
