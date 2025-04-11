@@ -14,11 +14,22 @@
         <div class="logo">
             <img src="{% static 'pages_app/img/pages_app/luxe logo.png' %}">
         </div>
-        <form action="/" method="post">
+        <form action="/login/" method="post">
             {% csrf_token %}
+            {{ form.as_p }}
             <h2>Log In</h2>
-            <label for="fullName">Your name</label>
-                <input type="text" id="fullName" name="full_name" placeholder="First and last name" required>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+
+            <label for="user_name">User name</label>
+                <input type="text" id="user_name" name="username" required>
             <label for="password">Password</label>
                 <input type="password" id="password" placeholder="At least 6 characters" name="password" required>
             <!-- submit btn -->

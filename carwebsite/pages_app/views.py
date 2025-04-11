@@ -1,55 +1,57 @@
 import re
-from django.contrib.auth import login#type: ignore
-from .models import CustomUser
+from django.contrib.auth import authenticate, login
+from .forms import UserRegisterForm
+#from .models import CustomUser
 from django.contrib.auth.models import User, auth #type: ignore
 from django.contrib import messages #type: ignore
 from django.shortcuts import render, redirect #type: ignore
+#from .models import UserProfile  # if I would be saving the phone number here
 
-# Create your views here.
+def create_account(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        
+        if form.is_valid():
+            # Get cleaned data from form
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            fullname = form.cleaned_data['full_name']
+            phone = form.cleaned_data['Mobile_number']
+            
+            # Create the user
+            user = User.objects.create_user(
+                username=username,
+                email=email,
+                password=password,
+                phone=phone,
+            )
+            # Split full name into first and last
+            name_parts = fullname.strip().split()
 
-#def login(request):
-    # if request.method == 'POST':
-        # username = request.POST.get('username')
-        # password = request.POST.get('password')
-        # email_or_number = request.POST.get('email_or_number')
+            # Always assign the first name
+            user.first_name = name_parts[0]
 
-        # Basic validation to ensure the field is not empty
-        # if not email_or_number:
-            # messages.error(request, "Please provide either an email or a phone number.")
-            # return render(request, 'signup.html')
+            # If there's more than one name part, assign the rest as last name
+            if len(name_parts) > 1:
+                user.last_name = " ".join(name_parts[1:])
 
-        # Check if the input is an email
-        # if re.match(r"[^@]+@[^@]+\.[^@]+", email_or_number):  # simple regex for email
-            # email = email_or_number
-            # phone_number = None
-        # Check if the input is a phone number (this can be adjusted based on your format)
-        # elif re.match(r"^\+?[0-9]{10,15}$", email_or_number):  # simple regex for phone number
-            # email = None
-            # phone_number = email_or_number
-        # else:
-            # messages.error(request, "Please provide a valid email or phone number.")
-            # return render(request, 'signup.html')
+            user.save()
+            # Optional: Save phone number in a UserProfile model
+            #UserProfile.objects.create(user=user, phone_number=phone)
 
-        # Ensure only one is provided, either email or phone
-        # if not email and not phone_number:
-            # messages.error(request, "Please provide either an email or a phone number.")
-            # return render(request, 'signup.html')
+            # Show success message and redirect
+            messages.success(request, "Account created successfully! You can now log in.")
+            return redirect('login')  # URL name for your login page
 
-        # if email and phone_number:
-            # messages.error(request, "You can only provide one: either email or phone number.")
-            # return render(request, 'signup.html')
+        else:
+            # If form is not valid, show error messages
+            messages.error(request, "Please correct the errors below.")
+    
+    else:
+        form = UserRegisterForm()
 
-        # Create the user
-        # user = CustomUser.objects.create_user(
-            # username=username,
-            # password=password,
-            # email=email if email else None,
-            # phone_number=phone_number if phone_number else None
-        # )
-        # login(request, user)
-        # return redirect('home')  # or any success URL
-
-    # return render(request, 'signup.html')
+    return render(request, 'pages_app/create_account.html', {'form': form})
 
 
 
@@ -66,61 +68,74 @@ def contact(request):
 def login(request):
     if request.method == 'POST':
         password = request.POST['password']
-        full_name = request.POST['full_name']
+        username = request.POST['username']
+
+        # Authenticate the user
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(user)
+            messages.success(request, "Login successful!")
+            return redirect('home')  # redirect to homepage or dashboard
+        else:
+            messages.error(request, "Invalid username or password.")
+            return redirect('/login/')  # back to login page
     return render(request, 'pages_app/login.html')
 
-def create_account(request):
-    if request.method == 'POST':
-        full_name = request.POST['full_name']
-        password = request.POST['password']
-        confirm_password = request.POST['confirm']
-        email_or_number = request.POST['number_email']
-        if password == confirm_password:
-            if not email_or_number:
-                messages.error(request, "Please provide either an email or a phone number.")
-                return redirect(request, 'create_account')
-            
-            if re.match(r"[^@]+@[^@]+\.[^@]+", email_or_number):
-                email = email_or_number
-                phone_number = None
-
-            elif re.match(r"^\+?[0-9]{10,15}$", email_or_number): 
-                email = None
-                phone_number = email_or_number
-            else:
-                messages.error(request, "Please provide a valid email or phone number.")
-                return redirect(request, 'create_account')
-            
-            if not email and not phone_number:
-                messages.error(request, "Please provide either an email or a phone number.")
-                return redirect(request, 'create_account')
-            
-            if email and phone_number:
-                messages.error(request, "You can only provide one: either email or phone number.")
-                return redirect(request, 'create_account')
-
-            if User.objects.filter(email_or_number=email_or_number).exists():
-                messages(request, " Email Already Used")
-                return redirect('create_account')
-            elif User.objects.filter(full_name=full_name).exists():
-                messages.info(request, "Named Already Exist")
-                return redirect('create_account')
-            else:
-                
-                user = CustomUser.objects.create_user(
-                full_name=full_name,
-                password=password,
-                email=email if email else None,
-                phone_number=phone_number if phone_number else None )
-                login(request, user)
-                return redirect('login')  # or any success URL
-
-
-                # user = User.objects.create_user(email=email_or_number, full_name=full_name, password=password)
-               # user.save()
-        else:
-            messages.info(request, "Password Not Same")
-            return redirect('create_account')
-    else:       
-        return render(request, 'pages_app/create_account.html')
-    
+#def create_account_a(request):
+#    if request.method == 'POST':
+#        name = request.POST['fullname']
+#        password = request.POST['password']
+#        confirm_password = request.POST['confirm_password']
+#        mobile_number = request.POST['Mobile_number']
+#        email = request.POST['email']
+#        if password == confirm_password:
+#            if not email_or_number:
+#                messages.error(request, "Please provide either an email or a phone number.")
+#                return redirect(request, 'create_account')
+#            
+#            if re.match(r"[^@]+@[^@]+\.[^@]+", email_or_number):
+#                email = email_or_number
+#                phone_number = None
+#
+#            elif re.match(r"^\+?[0-9]{10,15}$", email_or_number): 
+#                email = None
+#                phone_number = email_or_number
+#            else:
+#                messages.error(request, "Please provide a valid email or phone number.")
+#                return redirect(request, 'create_account')
+#            
+#            if not email and not phone_number:
+#                messages.error(request, "Please provide either an email or a phone number.")
+#                return redirect(request, 'create_account')
+#            
+#            if email and phone_number:
+#                messages.error(request, "You can only provide one: either email or phone number.")
+#                return redirect(request, 'create_account')
+#
+#            if User.objects.filter(email_or_number=email_or_number).exists():
+#                messages(request, " Email Already Used")
+#                return redirect('create_account')
+#            elif User.objects.filter(full_name=full_name).exists():
+#                messages.info(request, "Named Already Exist")
+#                return redirect('create_account')
+#            else:
+#                
+#                user = CustomUser.objects.create_user(
+#                full_name=full_name,
+#                password=password,
+#                email=email if email else None,
+#                phone_number=phone_number if phone_number else None )
+#                login(request, user)
+#                return redirect('login')  # or any success URL
+#
+#
+#                # user = User.objects.create_user(email=email_or_number, full_name=full_name, password=password)
+#               # user.save()
+#        else:
+#            messages.info(request, "Password Not Same")
+#            return redirect('create_account')
+#    else:       
+#        return render(request, 'pages_app/create_account.html')
+#    
+#

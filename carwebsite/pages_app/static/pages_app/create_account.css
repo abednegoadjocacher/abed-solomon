@@ -67,7 +67,7 @@ form{
     box-shadow: 2px 2px 4px #0000004d;
 }
 h3{
-    color: red;
+    color: rgb(245, 4, 213);
 }
 form h2{
     width: 100%;
@@ -151,4 +151,58 @@ footer{
 }
 footer p{
     color: var(--color-p);
+}
+
+
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin: 5px 0 10px;
+}
+.form-errors {
+    background-color: #ffe0e0;
+    border: 1px solid red;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+/* Wrapper */
+.messages {
+    margin: 10px 0;
+}
+
+/* Base Alert Style */
+.alert {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* Success = Green */
+.alert-success {
+    background-color: #28a745;
+}
+
+/* Error = Red */
+.alert-error {
+    background-color: #f50404;
+}
+
+/* Warning = Yellow */
+.alert-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+/* Info = Blue */
+.alert-info {
+    background-color: #17a2b8;
 }
