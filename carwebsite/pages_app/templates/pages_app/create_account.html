@@ -46,14 +46,14 @@
             
             
             <label for="Phone_number">Mobile number</label>
-                <input type="text" id="Phone_number" name="Mobile_number" required>
+                <input type="tel" maxlength="10" id="Phone_number" name="Mobile_number" required>
                 {% if form.Mobile_number.errors %}
                     <p class="error-message">{{ form.Mobile_number.errors.0 }}</p>
                 {% endif %}
 
 
             <label for="email">Email</label>
-                <input type="text" id="email" name="email">
+                <input type="email" id="email" name="email">
                 {% if form.email.errors %}
                     <p class="error-message">{{ form.email.errors.0 }}</p>
                 {% endif %}
