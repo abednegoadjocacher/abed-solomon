@@ -5,7 +5,7 @@ class Car(models.Model):
     name = models.CharField(max_length=50)
     brand = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='cars/', blank=True)
+    image = models.ImageField(upload_to='cars_img/', blank=True)
     description = models.TextField()
 
     def __str__(self):
