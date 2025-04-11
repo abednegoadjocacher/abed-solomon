@@ -17,8 +17,18 @@
                 <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/luxe logo.png">
             </div>
             <div class="nav-links-box">
-                <!-- <button id="menu-close-button" class="fas fa-times"></button> -->
                 <ul class="nav-links">
+                    <button id="menu-close-button" class="fas fa-times"></button>
+                    <div class="nav-car-name">
+                        <div class="luxe-text">
+                            <h3>Browse</h3>
+                            <h1>LUXE</h1>
+                        </div>
+                        <div class="sign-in-link">
+                            <p class="luxe-profile"><a href="/carwebsite/pages_app/templates/pages_app/login.html">Sign in <i class="fa-solid fa-circle-user"></i> </a>
+                            </p>
+                        </div>
+                    </div>
                     <li><a href="#home">Home</a></li>
                     <li class="dropdown">
                         <a href="#">Models</a>
@@ -34,27 +44,59 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-              <!-- <button id="menu-open-button" class="fas fa-bars"></button> -->
+              <button id="menu-open-button" class="fas fa-bars"></button>
             <div class="like-cart">
                 <i class="fa-regular fa-heart" ></i>            
-                <i class="fas fa-shopping-cart"></i>           
-                <i class="fa-solid fa-circle-user"></i>           
+                <i class="fas fa-shopping-cart"><p class="cart-num">0</p></i>           
+                <i class="fa-solid fa-circle-user" id="fa-circle-user"></i>           
             </div>
+            <div id="overlay"></div>
         </nav>
     </header>
     <section id="hero">
-        <div class="car-img">
-            <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/audi 11.png" alt="Audi-Model R-8">
-        </div>
-        <div class="car-buttons">
-            <input type="button" value="Order Now">
-            <input type="button" value="Contact">
+        <div class="move-con">
+            <div class="hero-content move1">
+                <div class="car-img">
+                    <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/audi 11.png" alt="Audi-Model R-8">
+                </div>
+                <div class="car-buttons">
+                    <input type="button" value="Order Now" class="btn1">
+                    <input type="button" value="Contact" class="btn2">
+                </div>
+            </div>
+            <div class="hero-content move2">
+                <div class="car-img">
+                    <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/audi 11.png" alt="Audi-Model R-8">
+                </div>
+                <div class="car-buttons">
+                    <input type="button" value="Order Now" class="btn1">
+                    <input type="button" value="Contact" class="btn2">
+                </div>
+            </div>
+            <div class="hero-content move3">
+                <div class="car-img">
+                    <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/audi 11.png" alt="Audi-Model R-8">
+                </div>
+                <div class="car-buttons">
+                    <input type="button" value="Order Now" class="btn1">
+                    <input type="button" value="Contact" class="btn2">
+                </div>
+            </div>
+            <div class="hero-content move4">
+                <div class="car-img">
+                    <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/audi 11.png" alt="Audi-Model R-8">
+                </div>
+                <div class="car-buttons">
+                    <input type="button" value="Order Now" class="btn1">
+                    <input type="button" value="Contact" class="btn2">
+                </div>
+            </div>
         </div>
     </section>
-    <!-- <section id="shop">
+    <section id="shop">
         <h2>TOP HYPER CARS</h2>
         <div class="shop-container">
-            <div class="card">
+            <div class="card pic1">
                 <div class="card-content">
                     <h1>Benz</h1>
                     <p>Super Fast</p>
@@ -62,35 +104,35 @@
                 <button>Check Out</button>
             </div>
             
-            <div class="card">
+            <div class="card pic2">
                 <div class="card-content">
                     <h1>Toyota</h1>
                     <p>Perfect Speed</p>
                 </div>
                 <button>Check Out</button>
             </div>
-            <div class="card">
+            <div class="card pic3">
                 <div class="card-content">
                     <h1>Audi</h1>
                     <p>Extra</p>
                 </div>
-                <button>Check Out</button>
+                <button class="btn4">Check Out</button>
             </div>
-            <div class="card">
+            <div class="card pic4">
                 <div class="card-content">
                     <h1>Bugatti</h1>
                     <p>Hero</p>
                 </div>
                 <button>Check Out</button>
             </div>
-            <div class="card">
+            <div class="card pic5">
                 <div class="card-content">
                     <h1>Tesla</h1>
                     <p>Auto-speed</p>
                 </div>
                 <button>Check Out</button>
             </div>
-            <div class="card">
+            <div class="card pic6">
                 <div class="card-content">
                     <h1>Rolls-Royce</h1>
                     <p>Perfect Speed</p>
@@ -100,7 +142,7 @@
         </div>
     </section>
     <section class="slide">
-        <div class="slide-container">
+        <!-- <div class="slide-container">
             <div class="item item1"><img src="/assets/cars/audi cars/audi logo.png" alt="audi logo"></div>
             <div class="item item2"><img src="/assets/cars/benz cars/benz logo.png" alt="benz logo"></div>
             <div class="item item3"><img src="/assets/cars/bmw cars/bmw logo.png" alt="bmw logo"></div>
@@ -151,6 +193,6 @@
         </div>
     </section> -->
 
-    <script src="js/script.js"></script>
+    <script src="/carwebsite/pages_app/static/script.js"></script>
 </body>
 </html>
