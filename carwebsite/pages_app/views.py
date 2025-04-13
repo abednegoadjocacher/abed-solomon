@@ -118,6 +118,20 @@ def login(request):
             return redirect('login')  # back to login page
     return render(request, 'pages_app/login.html')
 
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('home')
+
+
+
+
+
+
+
+
+
 #def create_account_a(request):
 #    if request.method == 'POST':
 #        name = request.POST['fullname']
