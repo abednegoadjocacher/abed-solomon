@@ -14,9 +14,8 @@
         <div class="logo">
             <img src="{% static 'pages_app/img/pages_app/luxe logo.png' %}">
         </div>
-        <form action="/login/" method="post">
+        <form action="" method="post">
             {% csrf_token %}
-            {{ form.as_p }}
             <h2>Log In</h2>
 
         {% if messages %}
