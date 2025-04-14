@@ -25,7 +25,7 @@
         <div class="logo">
             <img src="{% static 'pages_app/img/luxe logo.png' %}">
         </div>
-        <form action="" method="post" onsubmit="return validateForm()">
+        <form action="" method="post" onsubmit="return validateForm()" onsubmit="return validatePassword()">
             {% csrf_token %}
             <h2>Create account</h2>
 
@@ -54,7 +54,6 @@
             
             
             <label for="Phone_number">Mobile number</label>
-                <input type="tel" maxlength="10" id="Phone_number" name="Mobile_number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  required>
                 <input type="tel" maxlength="10" id="Phone_number" name="Mobile_number" pattern="\d{10}" required>
                 {% if form.Mobile_number.errors %}
                     <p class="error-message">{{ form.Mobile_number.errors.0 }}</p>
@@ -71,7 +70,7 @@
 
 
             <label for="password">Password</label>
-                <input type="password" id="password" placeholder="At least 6 characters" name="password" placeholder="123-456-7890" required>
+                <input type="password" id="password" placeholder="At least 8 characters" name="password" placeholder="123-456-7890" required>
                 {% if form.password.errors %}
                     <p class="error-message">{{ form.password.errors.0 }}</p>
                 {% endif %}
@@ -80,7 +79,7 @@
 
 
 
-            <p class="exclamation"><i class="fa-solid fa-circle-exclamation"></i>Passwords must be at least 6 characters.</p>
+            <p class="exclamation"><i class="fa-solid fa-circle-exclamation"></i>Passwords must be at least 8 characters.</p>
             <label for="re_password">Re-enter password</label>
                 <input type="password" id="re_password" name="confirm_password" required>
                 {% if form.confirm_password.errors %}
@@ -113,8 +112,55 @@
         
                 return true;  // allow form submission
             }
-        </script>
 
+
+                function validatePassword() {
+            const password = document.getElementById("password").value;
+
+            // This regex checks if password contains at least one special character
+            const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
+
+            if (!specialCharPattern.test(password)) {
+                alert("Password must contain at least one special character.");
+                return false;
+            }
+
+            return true; // Form is allowed to submit
+        }
+
+        function validatePassword() {
+            const password = document.getElementById("password").value;
+
+            const lengthCheck = /.{8,}/;
+            const upperCheck = /[A-Z]/;
+            const lowerCheck = /[a-z]/;
+            const digitCheck = /[0-9]/;
+            const specialCheck = /[!@#$%^&*(),.?":{}|<>]/;
+
+            if (!lengthCheck.test(password)) {
+                alert("Password must be at least 8 characters long.");
+                return false;
+            }
+            if (!upperCheck.test(password)) {
+                alert("Password must include at least one uppercase letter.");
+                return false;
+            }
+            if (!lowerCheck.test(password)) {
+                alert("Password must include at least one lowercase letter.");
+                return false;
+            }
+            if (!digitCheck.test(password)) {
+                alert("Password must include at least one number.");
+                return false;
+            }
+            if (!specialCheck.test(password)) {
+                alert("Password must include at least one special character.");
+                return false;
+            }
+
+            return true;
+    }
+</script>
 
 
 
