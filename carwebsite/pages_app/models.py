@@ -1,19 +1,24 @@
-# from django.db import models #type:ignore
+from django.db import models #type: ignore
+from django.contrib.auth.models import User #type: ignore
+from django.core.validators import RegexValidator #type: ignore
 
-# # Create your models here.
-# from django.contrib.auth.models import AbstractUser #type:ignore
-# from django.db import models #type:ignore
-# from django.core.exceptions import ValidationError #type:ignore
+class user_Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-# class CustomUser(AbstractUser):
-#     email = models.EmailField(blank=True, null=True, unique=True)
-#     phone_number = models.CharField(max_length=10, blank=True, null=True, unique=True)
+    # Only 10-digit numbers allowed
+    mobile = models.CharField(
+        max_length=10,
+        validators=[
+            RegexValidator(
+                regex=r'^\d{10}$',
+                message="Enter a valid 10-digit mobile number",
+                code='invalid_mobile'
+            )
+        ]
+    )
 
-#     def clean(self):
-#         if not self.email and not self.phone_number:
-#             raise ValidationError("Provide either email or phone number.")
-#         if self.email and self.phone_number:
-#             raise ValidationError("Provide only one: email or phone number.")
+    def full_name(self):
+        return f"{self.user.first_name} {self.user.last_name}"
 
-#         def __str__(self):
-#             return self.username
+    def __str__(self):
+        return self.user.username

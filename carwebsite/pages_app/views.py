@@ -1,7 +1,7 @@
 import re
 from django.contrib.auth import authenticate, login #type: ignore
-from .forms import UserRegisterForm
-#from .models import CustomUser
+# from .forms import UserRegisterForm
+from .models import user_Profile 
 from django.contrib.auth.models import User, auth #type: ignore
 from django.contrib import messages #type: ignore
 from django.shortcuts import render, redirect #type: ignore
@@ -25,10 +25,19 @@ def create_account(request):
             messages.info(request, "Username already exist")
             return redirect('create_account')
         
+        if user_Profile.objects.filter(mobile=phone_number):
+            messages.info(request, "Number already exist")
+            return redirect('create_account')
+        
         # if User.objects.filter(full_name=full_name).exists():
             # messages.info(request, "Name already in used")
             # return redirect('create_account')
         
+        if User.objects.filter(email=email).exists():
+            messages.info(request, "Email already Used")
+            return redirect('create_account')
+        
+
         if len(password) <= 6:
             messages.info(request, "Password must be more than six characters")
             return redirect('create_account')

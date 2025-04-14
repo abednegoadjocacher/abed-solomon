@@ -25,7 +25,7 @@
         <div class="logo">
             <img src="{% static 'pages_app/img/luxe logo.png' %}">
         </div>
-        <form action="" method="post">
+        <form action="" method="post" onsubmit="return validateForm()">
             {% csrf_token %}
             <h2>Create account</h2>
 
@@ -54,7 +54,7 @@
             
             
             <label for="Phone_number">Mobile number</label>
-                <input type="tel" maxlength="10" id="Phone_number" name="Mobile_number" required>
+                <input type="tel" maxlength="10" id="Phone_number" name="Mobile_number" pattern="\d{10}" required>
                 {% if form.Mobile_number.errors %}
                     <p class="error-message">{{ form.Mobile_number.errors.0 }}</p>
                 {% endif %}
@@ -98,6 +98,23 @@
 
             <p class="sign">Already have an account? <a href="/login">Sign in</a></p>
         </form>
+
+
+        <script>
+            function validateForm() {
+                const email = document.getElementById("email").value;
+                const pattern = /^[\w\.-]+@[\w\.-]+\.\w{2,4}$/;
+        
+                if (!pattern.test(email)) {
+                    alert("Please enter a valid email address.");
+                    return false;  // prevent form submission
+                }
+        
+                return true;  // allow form submission
+            }
+        </script>
+
+
 
 
     </div>
