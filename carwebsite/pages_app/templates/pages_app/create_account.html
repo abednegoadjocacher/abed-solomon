@@ -39,7 +39,7 @@
             {% endif %}
 
 
-            <label for="full_name">Your name</label>
+            <label for="full_name">Your Name/Company</label>
                 <input type="text" id="full_name" name="full_name" placeholder="First and last name" required>
                 {% if form.full_name.errors %}
                     <p class="error-message">{{ form.full_name.errors.0 }}</p>
@@ -54,7 +54,7 @@
             
             
             <label for="Phone_number">Mobile number</label>
-                <input type="tel" maxlength="10" id="Phone_number" name="Mobile_number" required>
+                <input type="tel" maxlength="10" id="Phone_number" name="Mobile_number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  required>
                 {% if form.Mobile_number.errors %}
                     <p class="error-message">{{ form.Mobile_number.errors.0 }}</p>
                 {% endif %}
@@ -70,7 +70,7 @@
 
 
             <label for="password">Password</label>
-                <input type="password" id="password" placeholder="At least 6 characters" name="password" required>
+                <input type="password" id="password" placeholder="At least 6 characters" name="password" placeholder="123-456-7890" required>
                 {% if form.password.errors %}
                     <p class="error-message">{{ form.password.errors.0 }}</p>
                 {% endif %}
