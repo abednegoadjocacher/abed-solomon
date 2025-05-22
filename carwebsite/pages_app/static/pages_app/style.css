@@ -3,11 +3,15 @@
     padding: 0;
     margin: 0;
 }
+body{
+    background-color: #000;
+}
 :root{
     /* color */
     --color-pim: #fff;
     --color-sec: #000;
     --color-nav: #4D3E3E;
+    --color-nav-scn: #ffffff;
 
     /* border-radius */
     --radius-1: 4px;
@@ -29,11 +33,12 @@ li{
     display: flex;
     align-items: center;
     justify-content: center;
-    position: static;
-    padding: 10px 0;
-    background-color: #ffffff7e;
-    top: -10px;
+    position: sticky;
+    padding: 20px 0;
+    background-color: #ffffff38;
+    top: -5px;
     box-shadow: 1px 4px 2px #00000036;
+    z-index: 5;
 }
 .nav-bar{
     display: flex;
@@ -41,15 +46,21 @@ li{
     justify-content: center;
     width: 100%;
 }
+#menu-close-button,
+#menu-open-button,
+.nav-car-name{
+    display: none;
+}
+
 .nav-bar-logo,
 .like-cart{
-    width: 70%;
+    width: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .nav-links-box{
-    width: 100%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,9 +70,38 @@ li{
 .nav-links-box ul li a{
     color: var(--color-pim);
     font-family: "Poppins";
+    opacity: 0.7;
+    transition: all 0.4s ease;
+}
+.nav-links-box ul li a:hover{
+    opacity: 1;
+}
+.nav-links-box ul .dropbtn{
+    position: absolute;
+    width: 200px;
+    background-color: var(--color-nav);
+    box-shadow: 0 20px 45px #00000036;
+    margin-top: -30px;
+    border-radius: var(--radius-1);
+    padding: 5px 5px;
+    opacity: 0;
+    z-index: -999;
+    /* display: none; */
+    transition: all 0.5s ease;
+}
+.nav-links-box ul li:hover .dropbtn{
+    display: block;
+    z-index: 8;
+    margin-top: 0;
+    opacity: 1;
+}
+
+.nav-links-box .dropbtn li a{
+    color: var(--color-pim);
 }
 .nav-bar-logo img{
     width: 100px;
+    filter: invert(95%) sepia(33%) saturate(0%) hue-rotate(324deg) brightness(258%) contrast(100%);
 }
 .nav-links-box .nav-links{
     width: 100%;
@@ -74,14 +114,18 @@ li{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
 }
 i{
     padding: 8px 8px;
     border-radius: var(--radius-5);
     background-color: var(--color-nav);
     cursor: pointer;
+    transition: all 0.3s ease;
 }
+/* i:hover{
+    color: #ff7b00;
+} */
 .fa-shopping-cart,
 .fa-heart,
 .fa-circle-user{
@@ -92,26 +136,627 @@ i{
 .fa-circle-user{
   color: transparent;
   -webkit-text-stroke: 1px var(--color-pim);
+  transition: all 0.3s ease;
 }
-/* Hero-Section */
+.fa-circle-user:hover{
+    -webkit-text-stroke: 1px #ff7b00;
+}
+.fa-shopping-cart:hover{
+    -webkit-text-stroke: 1px #ff7b00;
+}
+.fa-heart:hover{
+    color: #ff7b00;
+}
+.fa-shopping-cart{
+    position: relative;
+}
+.cart-num{
+    position: absolute;
+    color: #ff7b00;
+    -webkit-text-stroke: 0px var(--color-pim);
+    top: -6px;
+    left: 25px;
+    transform: rotate(10deg);
+    font-size: 1rem;
+}
+
+/* hero section */
+
 #hero{
+    position: relative;
     width: 100%;
+    height: 600px;
+    background: url(/carwebsite/pages_app/static/pages_app/img/big-building-terrace.jpg) center/cover no-repeat;
+    padding: 2rem 0 0 0;
+    /* z-index: 3; */
+}
+.move-con{
+    width: 100%;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: url(/carwebsite/pages_app/static/pages_app/img/pages_app/big-building-terrace.jpg) center/cover no-repeat;
-    padding: 4rem 0;
-    gap: 10px;
+
+}
+.hero-content{
+    width: 60%;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0 0 0;
+    margin: 0 200px;
 }
 .car-img{
+    width: 300px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.car-img img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.car-buttons{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
+    gap: 8px;
 }
-.car-img img{
-    width: 500px;
-    border: 1px solid red;
+.car-buttons input{
+    width: 150px;
+    height: 40px;
+    padding: 4px 0;
+    background: none;
+    border: 1px solid ;
+    color: var(--color-pim);
+    border-radius: var(--radius-1);
+}
+.btn2{
+    background-color: var(--color-pim);
+    color: var(--color-sec);
+}
+/* shop section */
+
+#shop{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    padding: 70px 0 10px 0;
+    background-color: var(--color-sec);
+}
+#shop h2{
+    width: 100%;
+    text-align: center;        
+    font-family: "Poppins";
+    font-weight: 400;
+    color: var(--color-pim);
+}
+.shop-container{
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+    gap: 30px;
+    padding: 30px 30px;
+}
+.card{
+    border-radius: var(--radius-1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 650px;
+    width: 100%;
+    position: relative;
+    padding: 20px 0 20px 0;
+}
+.card::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #00000069;
+    z-index: 0;
+}
+.card button{
+    width: 60%;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--color-pim);
+    color: var(--color-pim);
+    border-radius: var(--radius-1);
+    z-index: 1;
+}
+.card-content{
+    width: 100%;
+    color: var(--color-pim);
+    padding: 5px 15px;
+    z-index: 1;
+}
+.card-content h1{
+    font-size: 3rem;
+    padding: 5px 0;
+}
+.card-content p{
+    font-size: 1.3rem;
+    padding: 5px 0;
+}
+.pic1{
+    background: url(/carwebsite/pages_app/static/pages_app/img/yellow\ car.jpg) center/cover no-repeat;
+}
+.pic2{
+    background: url(/carwebsite/pages_app/static/pages_app/img/toyota.jpg) center/cover no-repeat;
+}
+.pic3{
+    background: url(/carwebsite/pages_app/static/pages_app/img/audi.jpg) center/cover no-repeat;
+}
+.pic4{
+    background: url(/carwebsite/pages_app/static/pages_app/img//bugatti.jpg) center/cover no-repeat;
+}
+.pic5{
+    background: url(/carwebsite/pages_app/static/pages_app/img/tesla.jpg) center/cover no-repeat;
+}
+.pic6{
+    background: url(/carwebsite/pages_app/static/pages_app/img/rose.jpg) center/cover no-repeat;
+}
+
+/* slide section */
+.slide-container{
+    width: 90%;
+    max-width: 1336px;
+    margin-inline: auto;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to right,
+        rgba(0,0,0,0),
+        rgba(0,0,0,1) 20%,
+        rgba(0,0,0,1) 80%,
+        rgba(0,0,0,0)
+    );
+}
+
+@keyframes scrollLeft {
+    to{
+        left: -200px;
+
+    }
+}
+
+.item{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: calc(150px * 8);
+    animation-name: scrollLeft;
+    animation-duration: 30s;
+    animation-timing-function: linear ;
+    animation-iteration-count: infinite;
+    overflow: hidden;
+}
+.item1 {
+    animation-delay: calc(30s / 8 * (8 - 1) * -1);
+}
+.item2 {
+    animation-delay: calc(30s / 8 * (8 - 2) * -1);
+}
+.item3 {
+    animation-delay: calc(30s / 8 * (8 - 3) * -1);
+}
+.item4 {
+    animation-delay: calc(30s / 8 * (8 - 4) * -1);
+}
+.item5 {
+    animation-delay: calc(30s / 8 * (8 - 5) * -1);
+}
+.item6 {
+    animation-delay: calc(30s / 8 * (8 - 6) * -1);
+}
+.item7 {
+    animation-delay: calc(30s / 8 * (8 - 7) * -1);
+}
+.item8 {
+    animation-delay: calc(30s / 8 * (8 - 8) * -1);
+}
+
+.item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* footer section */
+#contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.footer-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+.contact-details{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.contact-logo{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contact-logo img{
+    width: 100px;
+    filter: invert(95%) sepia(33%) saturate(0%) hue-rotate(324deg) brightness(258%) contrast(100%);
+}
+.contact-content{
+    width: 70%;
+    padding: 0 10px;
+}
+.contact-content p{
+    color: var(--color-pim);
+    font-size: 1.1rem;
+    line-height: 25px;
+}
+.copy{
+    color: var(--color-pim);
+    font-size: 0.8rem;
+    padding: 10px 0;
+    opacity: 0.7;
+}
+
+@media (max-width: 912px )  {
+.nav-box{
+    width: 100%;
+}
+.nav-bar{
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 10px 0 50px;
+}    
+.nav-bar-logo,
+.like-cart{
+    width: 25%;
+}
+.nav-links-box{
+    display: block;
+    height: 100vh;
+    position: fixed;
+    width: 300px;
+    top: 0;
+    left: -350px;
+    border-radius: 0px;
+    background-color: var(--color-nav-scn);
+    z-index: 2;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.show{
+    left: 0;
+    opacity: 1;
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.692);
+    z-index: 1; 
+    display: none; 
+  }
+.nav-links-box .nav-links{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+    position: relative;
+    gap: 10px;
+    padding: 160px 0px 0 0px;
+}
+.nav-links-box .nav-links a{
+    color: var(--color-sec);
+    opacity: 0.7;
+    transition: all 1s ease;
+}
+.nav-links-box .nav-links a:hover{
+    opacity: 1;
+}
+#menu-close-button,
+#menu-open-button{
+    display: block;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+#menu-close-button:hover{
+    transform: scale(1.1);
+}
+#menu-open-button:hover{
+    transform: scale(1.1);
+}
+#menu-close-button{
+    position: absolute;
+    top: 20px;
+    right: -40px;
+    color: var(--color-pim);
+}
+#menu-open-button{
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    padding: 7px 8px;
+    border-radius: var(--radius-5);
+    font-size: 1rem;
+    border: 1px solid var(--color-pim);
+    color: var(--color-pim);
+}
+.nav-car-name{
+    width: 100%;
+    display: flex;
+    position: absolute;
+    padding: 60px 20px;
+    background-color: var(--color-nav);
+    top: 0;
+    left: 0;
+    color: var(--color-pim);
+}
+.nav-car-name .luxe-text{
+    padding: 0 0 10px 15px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-family: "Poppins";
+    line-height: 22px;
+}
+.nav-car-name h1{
+    font-size: 1.7rem;
+}
+.nav-car-name h3{
+    font-size: 1rem;
+}
+
+.nav-links-box ul li{
+    width: 100%;
+    padding: 15px 20px;
+    border-bottom: 3px solid #00000062;
+    font-family: "Poppins";
+    cursor: pointer;
+}
+.sign-in-link .luxe-profile a{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1rem;
+    color: var(--color-pim);
+    font-family: "Poppins";
+    opacity: 1;
+}
+
+
+#fa-circle-user{
+    display: none;
+}
+/*  */
+}
+@media (max-width: 650px ){
+    .nav-box{
+        padding: 5px;
+    }
+    .nav-links-box .nav-links a{
+        color: var(--color-sec);
+        opacity: 0.7;
+        transition: all 1s ease;
+    }
+    .nav-links-box .nav-links a:hover{
+        opacity: 1;
+    }
+    i{
+        padding: 8px 8px;
+    }
+    .fa-shopping-cart,
+    .fa-heart,
+    .fa-circle-user{
+    font-size: 15px;
+}
+    .fa-shopping-cart,
+    .fa-circle-user{
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color-pim);
+}
+    .nav-bar-logo img{
+        width: 95px;
+        filter: invert(95%) sepia(33%) saturate(0%) hue-rotate(324deg) brightness(258%) contrast(100%);
+    }
+    #menu-open-button{
+        position: absolute;
+        top: 13px;
+        left: 20px;
+        padding: 6px 7px;
+        font-size: 1rem;
+    }
+    /* slide section */
+    #hero{
+        height: 450px;
+        padding: 10rem 0 0 0;
+    }
+    .move-con{
+        height: 250px;
+    }
+    .hero-content{
+        width: 80%;
+        padding: 0 0;
+    }
+    .car-img{
+        width: 200px;
+        height: 200px;
+    }
+    .car-img img{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+    .car-buttons input{
+        width: 120px;
+        height: 30px;
+    }
+    /* card section */
+    .shop-container{
+        grid-template: repeat(6, 1fr) / repeat(1, 1fr);
+        gap: 15px;
+        padding: 30px 20px;
+    }
+    /* footer section */
+    .footer-container{
+        flex-direction: column;
+    }
+    .contact-details{
+        flex-direction: column;
+    }
+    .contact-content{
+        width: 100%;
+    }
+    .contact-content p{
+        font-size: 0.8rem;
+    }
+    .copy{
+        font-size: 0.7rem;
+        padding: 30px 0;
+        opacity: 0.7;
+    }
+}
+@media (max-width: 450px ){
+    .nav-box{
+        position: sticky;
+        z-index: 3;
+    }
+    .nav-links-box{
+        width: 250px;
+    }
+    .nav-bar{
+        padding: 5px 15px 3px 50px;
+    }  
+    .nav-bar-logo img{
+        width: 80px;
+    }
+    .nav-links-box .nav-links a{
+        color: var(--color-sec);
+        opacity: 0.7;
+        transition: all 1s ease;
+    }
+    .nav-links-box .nav-links a:hover{
+        opacity: 1;
+    }
+
+    #menu-open-button{
+        top: 17px;
+        left: 15px;
+        padding: 5px 6px;
+        font-size: 0.9rem;
+    }
+    i{
+        padding: 7px 7px;
+    }
+        .fa-shopping-cart,
+        .fa-heart{
+        font-size: 17px;
+    }
+        .fa-heart{
+        padding: 6px 6px;
+    }
+    .cart-num{
+        top: -5px;
+        left: 20px;
+        font-size: 0.8rem;
+    }
+
+    /* hero section */
+    #hero{
+        height: 450px;
+        padding: 10rem 0 0 0;
+    }
+    .move-con{
+        height: 250px;
+    }
+    .hero-content{
+        width: 80%;
+        padding: 0 0;
+    }
+    .car-img{
+        width: 200px;
+        height: 200px;
+    }
+    .car-img img{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+    .car-buttons input{
+        width: 120px;
+        height: 30px;
+    }
+    
+    /* shop section */
+
+    .shop-container{
+        grid-template: repeat(6, 1fr) / repeat(1, 1fr);
+        gap: 15px;
+        padding: 30px 20px;
+    }
+    .card{
+        height: 450px;
+    }
+    .card button{
+        width: 80%;
+        font-size: 1rem;
+    }
+    .card-content h1{
+        font-size: 2.3rem;
+    }
+    .card-content p{
+        font-size: 1rem;
+    }
+
+    /* slide section */
+    .item{
+        width: 100px;
+        height: 100px;
+        left: calc(100px * 8);
+    }
+
+    /* footer */
+    .contact-details{
+        flex-direction: column;
+    }
+    .contact-content{
+        width: 100%;
+    }
+    .contact-content p{
+        font-size: 0.8rem;
+        line-height: 25px;
+    }
+    .copy{
+        font-size: 0.7rem;
+        padding: 30px 0;
+        opacity: 0.7;
+    }
 }

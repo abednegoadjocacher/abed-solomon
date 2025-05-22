@@ -23,52 +23,15 @@
 
     <div class="form-box">
         <div class="logo">
-            <img src="{% static 'pages_app/img/luxe logo.png' %}">
+            <img src="/carwebsite/pages_app/static/pages_app/img/pages_app/luxe logo.png">
         </div>
         <form action="" method="post" onsubmit="return validateForm()" onsubmit="return validatePassword()">
             {% csrf_token %}
             <h2>Create account</h2>
-
-            <!-- Show non-field errors (e.g. password mismatch) -->
-            {% if form.non_field_errors %}
-                <div class="form-errors">
-                 {% for error in form.non_field_errors %}
-                     <p class="error-message">{{ error }}</p>
-                 {% endfor %}
-                 </div>
-            {% endif %}
-
-
-            <label for="full_name">Your Name/Company</label>
-                <input type="text" id="full_name" name="full_name" placeholder="First and last name" required>
-                {% if form.full_name.errors %}
-                    <p class="error-message">{{ form.full_name.errors.0 }}</p>
-                {% endif %}
-            
-            
-            <label for="user_name">User name</label>
-                <input type="text" id="user_name" name="username" required>
-                {% if form.username.errors %}
-                    <p class="error-message">{{ form.username.errors.0 }}</p>
-                {% endif %}
-            
-            
-            <label for="Phone_number">Mobile number</label>
-                <input type="tel" maxlength="10" id="Phone_number" name="Mobile_number" pattern="\d{10}" required>
-                {% if form.Mobile_number.errors %}
-                    <p class="error-message">{{ form.Mobile_number.errors.0 }}</p>
-                {% endif %}
-
-
-            <label for="email">Email</label>
-                <input type="email" id="email" name="email">
-                {% if form.email.errors %}
-                    <p class="error-message">{{ form.email.errors.0 }}</p>
-                {% endif %}
-
-
-
-
+            <label for="fullName">Your name</label>
+                <input type="text" id="fullName" name="full_name" placeholder="First and last name" required>
+            <label for="number_email">Mobile number or email</label>
+                <input type="text" id="number_email" name="number_email" required>
             <label for="password">Password</label>
                 <input type="password" id="password" placeholder="At least 8 characters" name="password" placeholder="123-456-7890" required>
                 {% if form.password.errors %}
