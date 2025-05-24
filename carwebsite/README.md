@@ -9,7 +9,7 @@ In the pages_app the views of each page is implemented.
 I have created a new virtual environment.
 I have updated python on my PC.
 I tested the work on the new environment that i have created to check for errors.
-I did have some few errors because I have migrated thee work to new environment.
+I did have some few errors because I have migrated the work to new environment.
 I will work on them soon
 
 
